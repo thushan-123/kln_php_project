@@ -3,8 +3,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require __DIR__ . '/Function/function.php';
-require __DIR__ . '/Connection/connection.php';
+include_once __DIR__ . '/Function/function.php';
+include_once __DIR__ . '/Connection/connection.php';
 
 try {
 

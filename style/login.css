@@ -31,3 +31,11 @@ h1{
     text-align: center; 
     color: blue;
 }
+
+#error-box{
+    background-color: crimson;
+    font-size: 18px;
+    width: 250px;
+    height: 30px;
+
+}
