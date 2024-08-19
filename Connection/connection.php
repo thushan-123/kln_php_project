@@ -20,9 +20,5 @@ if (mysqli_connect_errno()) {
     die("MySQL connection error: " . mysqli_connect_error());
 }
 
-
-
-
-
 ?>
 

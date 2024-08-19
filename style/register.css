@@ -27,6 +27,6 @@ h1{
 }
 
 #error-box {
-    color: red;
+    background-color: crimson;
     font-size: 15px;
 }

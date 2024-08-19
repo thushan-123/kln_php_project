@@ -38,6 +38,24 @@ try {
             $errors[] = "Username or password is too short";
         }
 
+        // Check email or mobile is taken
+        try{
+            $email = mysqli_real_escape_string($connection,$email);
+            $mobile =  mysqli_real_escape_string($connection,$mobile);
+
+            $query = "SELECT * FROM users WHERE email='$email' OR mobile='$mobile';";
+
+            $result = mysqli_query($connection, $query);
+            if (mysqli_num_rows($result) > 0) {
+
+                $errors[] = "Email or Mobile already exits";
+            }
+            logger("WARNING", "$email or $mobile is already taken");
+
+        }catch(Exception $e){
+            logger("ERROR", $e->getMessage());
+        }
+
         // Check for no errors before inserting data into the database
         if (count($errors) == 0) {
 
@@ -59,7 +77,7 @@ try {
             try {
                 // Insert data into the users table
                 if (mysqli_query($connection, $query)) {
-                    logger("[INFO]", "register.php : User data inserted successfully");
+                    logger("INFO", "register.php : User data inserted successfully");
 
                     // If the query executes successfully, redirect to the login page
                     header("Location: login.php?UserRegister=true&Username=$username");
@@ -97,7 +115,7 @@ try {
 
             <?php 
                 if (count($errors) > 0) {
-                    echo "<div class='error-box'> $errors[0] </div>";
+                    echo "<div id='error-box'> $errors[0] </div>";
                 }
             ?>
 
