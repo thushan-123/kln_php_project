@@ -1,0 +1,32 @@
+[2024-08-19 04:54:22]  [ERROR] - Incorrect table definition; there can be only one auto column and it must be defined as a key
+[2024-08-19 04:55:54]  [ERROR] - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 2
+[2024-08-19 04:56:26]  [ERROR] - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 2
+[2024-08-19 04:59:12]  [INFO] - script.sql file executed successfully
+[2024-08-19 05:00:49]  [ERROR] - Table 'users' already exists
+[2024-08-19 05:01:29]  [INFO] - script.sql file executed successfully
+[2024-08-19 07:21:17]  [ERROR] - Query was empty
+[2024-08-19 07:22:40]  [ERROR] - Query was empty
+[2024-08-19 07:24:48]  [ERROR] - Query was empty
+[2024-08-19 07:27:32]  [ERROR] - Query was empty
+[2024-08-19 07:27:51]  [ERROR] - Query was empty
+[2024-08-19 07:27:51]  [[ERROR]] - register.php : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INSET INTO users(username,email,password,mobile,gender) VALUES (admin, Thusha...' at line 1
+[2024-08-19 07:31:11]  [ERROR] - Query was empty
+[2024-08-19 07:31:11]  [ERROR] - register.php : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INSET INTO users(username,email,password,mobile,gender) VALUES (admin, Thusha...' at line 1
+[2024-08-19 07:31:52]  [ERROR] - Query was empty
+[2024-08-19 07:31:52]  [ERROR] - register.php : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INSET INTO users(username,email,password,mobile,gender) VALUES (admin, Thusha...' at line 1
+[2024-08-19 07:32:05]  [ERROR] - Query was empty
+[2024-08-19 07:32:05]  [ERROR] - register.php : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INSET INTO users(username,email,password,mobile,gender) VALUES (admin, Thusha...' at line 1
+[2024-08-19 07:36:05]  [ERROR] - Query was empty
+[2024-08-19 07:36:05]  [ERROR] - register.php : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INSET INTO users(username,email,password,mobile,gender) VALUES ('admin', 'Thu...' at line 1
+[2024-08-19 07:36:14]  [ERROR] - Query was empty
+[2024-08-19 07:36:14]  [ERROR] - register.php : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'INSET INTO users(username,email,password,mobile,gender) VALUES ('admin', 'Thu...' at line 1
+[2024-08-19 07:37:01]  [ERROR] - Query was empty
+[2024-08-19 07:37:01]  [[ERROR]] - register.php : Unknown column 'username' in 'field list'
+[2024-08-19 07:37:12]  [ERROR] - Query was empty
+[2024-08-19 07:37:12]  [[ERROR]] - register.php : Unknown column 'username' in 'field list'
+[2024-08-19 07:38:20]  [ERROR] - Query was empty
+[2024-08-19 07:38:20]  [[ERROR]] - register.php : Data too long for column 'password' at row 1
+[2024-08-19 07:38:31]  [ERROR] - Query was empty
+[2024-08-19 07:38:31]  [[ERROR]] - register.php : Data too long for column 'password' at row 1
+[2024-08-19 07:40:00]  [ERROR] - Query was empty
+[2024-08-19 07:40:00]  [[INFO]] - register.php : User data inserted successfully

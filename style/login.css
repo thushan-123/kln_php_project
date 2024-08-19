@@ -1,0 +1,26 @@
+h1{
+    text-align: center;
+}
+
+.container{
+    text-align: center;
+}
+
+#username , #password {
+    font-size: 15px;
+    width :250px;
+    height: 30px;
+}
+
+#submit-btn{
+    font-weight: bold;
+    font-size: 15px;
+    width: 255px;
+    height: 30px;
+}
+
+#link{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+}
