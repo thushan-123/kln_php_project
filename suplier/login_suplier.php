@@ -46,12 +46,16 @@ try{
                         if ($data['verify'] == true){
                             // Genarate unique token
                             $token = bin2hex(random_bytes(16));
-                            // Data is added to the session
-                            $_SESSION['suplier_id'] = $data['suplier_id'];
-                            $_SESSION['suplier_name'] = $data['suplier_username'];
-                            $_SESSION['email'] = $data['email'];
-                            $_SESSION['mobile'] = $data['mobile'];
-                            $_SESSION['token'] = $token;
+                            // Data is added to the session save to assosiative array
+                            $_SESSION['suplier'] = [
+                                'suplier_id'=> $data['suplier_id'],
+                                'suplier_username'=> $data['suplier_username'],
+                                'email'=> $data['email'],
+                                'mobile'=> $data['mobile'],
+                                'token'=> $token,
+                                'islogin'=> true
+                            ];
+                            
 
                             $username = $data['suplier_name'];
 
@@ -59,7 +63,7 @@ try{
                             setcookie('token',$token, time()+ 3600*2, "/");
 
                             // Login successfully redirect to the index.php page
-                            logger("INFO", "User : $username login successfull. redirect to the suplier_panel page.");
+                            logger("INFO", "Suplier : $username login successfull. redirect to the suplier_panel page.");
                             header("Location: suplier_panel.php");
                             exit();
                         }else{

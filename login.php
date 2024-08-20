@@ -46,11 +46,14 @@ try{
                         // Genarate unique token
                         $token = bin2hex(random_bytes(16));
                         // Data is added to the session
-                        $_SESSION['user_id'] = $data['user_id'];
-                        $_SESSION['user_name'] = $data['user_name'];
-                        $_SESSION['email'] = $data['email'];
-                        $_SESSION['mobile'] = $data['mobile'];
-                        $_SESSION['token'] = $token;
+                        $_SESSION['user'] = [
+                            'user_id'=> $data['user_id'],
+                            'user_name'=> $data['user_name'],
+                            'email'=> $data['email'],
+                            'mobile'=> $data['mobile'],
+                            'token'=> $token,
+                            'islogin'=> true
+                        ];
 
                         $username = $data['user_name'];
 

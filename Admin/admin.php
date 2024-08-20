@@ -48,11 +48,15 @@ try{
 
                     $data = mysqli_fetch_assoc($result);
 
-                    // Data save the session 
-                    $_SESSION['admin_id'] = $data['admin_id'];
-                    $_SESSION['admin_name'] = $data['admin_name'];
-                    $_SESSION['email'] = $data['email'];
-                    $_SESSION['token'] = $token;
+                    // Data save the session  asosiative array
+                    $_SESSION['admin'] = [
+                        'admin_id'=> $data['admin_id'],
+                        'admin_name'=> $data['admin_name'],
+                        'email' => $data['email'],
+                        'token'=> $token,
+                        'islogin' => true
+                    ];
+                    
 
                     setcookie('token',$token, time()+ 3600*2 , '/');
                     $admin_name = $data['admin_name'];
