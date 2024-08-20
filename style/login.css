@@ -34,6 +34,7 @@ h1{
 
 #error-box{
     background-color: crimson;
+    text-align: center;
     font-size: 18px;
     width: 250px;
     height: 30px;

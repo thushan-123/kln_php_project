@@ -57,3 +57,19 @@
 [2024-08-19 10:51:05]  [INFO] - User : thush login successfull. redirect to the index page.
 [2024-08-19 16:15:06]  [INFO] - Admin: thush login successfull. redrect to the admin_panel
 [2024-08-19 16:24:22]  [INFO] - Admin: thush login successfull. redrect to the admin_panel
+[2024-08-20 15:01:38]  [WARNING] - Thushanmadusanka456@gmail.com or 0785914774 is already taken
+[2024-08-20 15:01:38]  [ERROR] - register.php : Data too long for column 'email' at row 1
+[2024-08-20 15:01:54]  [WARNING] - Thushanmadusanka456@gmail.com or 0785914774 is already taken
+[2024-08-20 15:01:54]  [ERROR] - register.php : Data too long for column 'email' at row 1
+[2024-08-20 15:07:33]  [WARNING] - thushanmadusanka456@gmail.com or 0785914774 is already taken
+[2024-08-20 15:07:33]  [INFO] - register_register : Suplier data inserted successfully
+[2024-08-20 15:08:17]  [INFO] - retrieve data from users table successfully
+[2024-08-20 15:08:17]  [INFO] -  is not verified
+[2024-08-20 15:10:16]  [INFO] - retrieve data from users table successfully
+[2024-08-20 15:10:16]  [INFO] - thushan is not verified
+[2024-08-20 15:10:29]  [INFO] - retrieve data from users table successfully
+[2024-08-20 15:10:29]  [INFO] - thushan is not verified
+[2024-08-20 15:11:28]  [INFO] - retrieve data from users table successfully
+[2024-08-20 15:11:28]  [INFO] - thushan is not verified
+[2024-08-20 15:12:27]  [INFO] - retrieve data from users table successfully
+[2024-08-20 15:12:27]  [INFO] - User :  login successfull. redirect to the suplier_panel page.
