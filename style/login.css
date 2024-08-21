@@ -6,6 +6,16 @@ h1{
     left : 0;
 }
 
+.formHead{
+    background-color: #ffdb4d;
+    color: #804000;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 10px;
+    justify-content: center;
+
+}
+
 .container{
     text-align: center;
     cursor: pointer;
@@ -16,7 +26,7 @@ h1{
 #email , #password {
     font-size: 15px;
     width :250px;
-    height: 30px;
+    height: 35px;
     border-radius: 15px;
     cursor: pointer;
     padding: 2px;
@@ -27,23 +37,32 @@ h1{
     font-weight: bold;
     font-size: 15px;
     width: 255px;
-    height: 30px;
+    height: 35px;
     background-color: #66ffff;
     border-radius: 15px;
     cursor: pointer;
     text-decoration: none;
+
 }
 
 #submit-btn:hover{
     background-color: aqua;
     text-decoration: underline;
+    transition: 0.3s;
 }
 
 #link{
-    text-decoration: none;
-    font-size: 15px;
     font-weight: bold;
+    font-size: 20px;
     cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+#link:hover{
+    text-decoration: underline;
+    color: #ccf2ff;
 }
 
 .welcome-box{
@@ -54,12 +73,15 @@ h1{
 }
 
 #error-box{
-    background-color: crimson;
+    background-color: #ff0000;
     text-align: center;
     font-size: 18px;
-    width: 250px;
-    height: 30px;
-
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 5px;
 }
 
 body {

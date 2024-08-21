@@ -1,5 +1,6 @@
 <?php
 
+global $connection;
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -61,11 +62,11 @@ try{
                     setcookie('token',$token, time()+ 3600*2 , '/');
                     $admin_name = $data['admin_name'];
 
-                    logger("INFO", "Admin: $admin_name login successfull. redrect to the admin_panel");
+                    logger("INFO", "Admin: $admin_name login successfully. Redirect to the admin_panel");
                     header("Location: admin_panel.php");
                 }else{
                     
-                    $errors[] = "Invalied Username or Password";
+                    $errors[] = "Invalid Username or Password";
                 }
 
             }catch(Exception $e){
@@ -90,12 +91,10 @@ try{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="adminLogin.css">
 </head>
 <body>
-    <div>
-        <h1>Admin Login</h1>
-    </div>
+
     <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
 
@@ -108,12 +107,20 @@ try{
             
             
             ?>
-            
-            <input type="email" name="email" id="email"  placeholder="Email" required/><br><br>
+            <div class="form-box">
+                <div class = "formHead">
+                    <h1>Admin Login</h1>
+                </div>
 
-            <input type="password" name="password" id="password"  placeholder="Password" required/><br><br>
+            <label for="email"></label>
+            <input type="email" name="email" id="email" placeholder="Email" required/><br><br>
+
+            <label for="password"></label>
+            <input type="password" name="password" id="password" placeholder="Password" required/><br><br>
 
             <button id="submit-btn" type="submit">Login</button><br><br>
+
+            </div>
 
         </form>
     </div>

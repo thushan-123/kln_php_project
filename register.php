@@ -1,5 +1,6 @@
-<?php 
+<?php
 
+global $connection;
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -35,7 +36,7 @@ try {
 
         } elseif (strlen($username) < 4 || strlen($password) < 5) {
 
-            $errors[] = "Username or password is too short";
+            $errors[] = "Username or Password is too short";
         }
 
         // Check email or mobile is taken
@@ -118,22 +119,24 @@ try {
                 }
             ?>
             <div class="form-box">
-                <div>
+                <div class = "formHead">
                     <h1>Create Account</h1>
                 </div>
                     <label for="username"></label>
             <input type="text" name="username" id="username" placeholder="Username" required/><br><br>
 
-            <label for="email"></label>
-            <input type="email" name="email" id="email" placeholder="Email" required/><br><br>
+            <label for="email">
+                <input type="email" name="email" id="email" placeholder="Email" required/>
+            </label><br><br>
 
-            <label for="mobile"></label>
-            <input type="number" name="mobile" id="mobile" placeholder="Mobile" required/><br><br>
+            <label for="mobile">
+                <input type="number" name="mobile" id="mobile" placeholder="Mobile" required/>
+            </label><br><br>
 
-            <label for="password"></label>
-            <input type="password" name="password" id="password" placeholder="Password" required/><br><br>
+            <label for="password">
+                <input type="password" name="password" id="password" placeholder="Password" required/>
+            </label><br><br>
 
-            
             <label for="Male">
                 <input type="radio" id="Male" name="gender" value="male"/>Male
             </label>

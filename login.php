@@ -1,4 +1,6 @@
 <?php
+global $connection;
+
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -20,7 +22,7 @@ try{
             if(empty($email) || empty($password)){
                 $errors[] = 'Email or Password is Empty';
             }elseif(!(preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email))){
-                $errors[] = "Email is not valied";
+                $errors[] = "Email is not valid";
             }
 
             
@@ -31,19 +33,19 @@ try{
 
 
             if (count($errors) == 0){
-                // Check the database valied user
+                // Check the database valid user
                 try{
                     $password = sha1($password);
                     $query = "SELECT * From users WHERE email='$email' AND password='$password' LIMIT 1 ;";
 
                     $query = mysqli_query($connection, $query);
 
-                    logger("INFO", "retrieve data from users table successfully");
+                    logger("INFO", "Retrieve data from Users table Successfully");
 
                     if (mysqli_num_rows($query) == 1){
                         $data = mysqli_fetch_assoc($query);
                         
-                        // Genarate unique token
+                        // Generate unique token
                         $token = bin2hex(random_bytes(16));
                         // Data is added to the session
                         $_SESSION['user'] = [
@@ -57,11 +59,11 @@ try{
 
                         $username = $data['user_name'];
 
-                        // set the cookie with authantication token
+                        // set the cookie with authentication token
                         setcookie('token',$token, time()+ 3600*2, "/");
 
                         // Login successfully redirect to the index.php page
-                        logger("INFO", "User : $username login successfull. redirect to the index page.");
+                        logger("INFO", "User : $username Login Successfully. Redirect to the Index page.");
                         header("Location: index.php");
                         exit();
 
@@ -94,8 +96,8 @@ try{
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
             <?php 
                 if ($_SERVER['REQUEST_METHOD']== 'GET'){
-                    if ($_GET['UserRegister'] == true){
-                        $Username = $_GET['Username'];
+                    if (isset($_POST['UserRegister'])){
+                        $Username = $_POST['Username'];
                         echo "<div class='welcome-box'><b> Hello $Username Please Login </b></div>";
                     }
                 }
@@ -105,8 +107,8 @@ try{
                 }
             ?>
             <div class="form-box">
-                <div>
-                    <h1>Login to Account</h1>
+                <div class = "formHead">
+                    <h1>Sign In</h1>
                 </div>
 
             <label for="email"></label>
@@ -117,7 +119,7 @@ try{
 
             <button id="submit-btn" type="submit">Login</button><br><br>
 
-            <a href="register.php" id="link">Create a new account</a>
+            <a href="register.php" id="link">Create a New Account</a>
             </div>
         </form>
     </div>

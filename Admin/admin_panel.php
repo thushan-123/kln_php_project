@@ -1,5 +1,6 @@
 <?php
 
+global $connection;
 session_start();
 error_reporting(E_ALL);
 ini_set("display_errors",1);
@@ -22,7 +23,7 @@ if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != tr
 // Create a function  check the admin cookie is expired
 function cookie_checker(){
     if ($_SESSION['admin']['token'] != $_COOKIE['token']){
-        echo "<script> window.alert('Cookie is expire. please Login here')</script>";
+        echo "<script> window.alert('Cookie is expire. Please Login here')</script>";
         header("Location: admin.php");
     }else{
         return true;
@@ -38,17 +39,17 @@ if (isset($_POST['submit_verify'])){
 
         if (mysqli_query($connection, $query)){
 
-            logger("INFO", "supler verify successfully");
+            logger("INFO", "supplier verify successfully");
         }else{
 
             throw new Exception(mysqli_error($connection));
         }
     }catch(Exception $e){
-        logger("ERROR", "suplier submit verify" . $e->getMessage());
+        logger("ERROR", "supplier submit verify" . $e->getMessage());
     }
 }
 
-echo "<div id='suplier-verify'>";
+echo "<div id='supplier-verify'>";
 
 if(cookie_checker()){
     
@@ -60,10 +61,10 @@ if(cookie_checker()){
         $query = "SELECT * FROM supliers WHERE verify=false ;";
 
         $result = mysqli_query($connection, $query);
-        logger("INFO", "get the suplier data in db successfully");
+        logger("INFO", "get the supplier data in db successfully");
 
         // Create a table
-        echo "<table id='table-suplier-verify'>
+        echo "<table id='table-supplier-verify'>
                 <th>Suplier id</th>
                 <th>Username</th>
                 <th>Email</th>
