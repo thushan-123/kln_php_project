@@ -80,9 +80,6 @@ try{
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,14 +89,12 @@ try{
     <link rel="stylesheet" href="style/login.css">
 </head>
 <body>
-    <div>
-        <h1>Flowers</h1>
-    </div>
+
     <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
             <?php 
                 if ($_SERVER['REQUEST_METHOD']== 'GET'){
-                    if ($_GET['UserRegister'] == true){
+                    if ($_GET['UserRegister']){
                         $Username = $_GET['Username'];
                         echo "<div class='welcome-box'><b> Hello $Username Please Login </b></div>";
                     }
@@ -109,14 +104,21 @@ try{
                     echo "<div id='error-box'> $errors[0] </div>";
                 }
             ?>
+            <div class="form-box">
+                <div>
+                    <h1>Login to Account</h1>
+                </div>
 
-            <input type="email" name="email" id="email"  placeholder="Email" required/><br><br>
+            <label for="email"></label>
+            <input type="email" name="email" id="email" placeholder="Email" required/><br><br>
 
-            <input type="password" name="password" id="password"  placeholder="Password" required/><br><br>
+            <label for="password"></label>
+            <input type="password" name="password" id="password" placeholder="Password" required/><br><br>
 
             <button id="submit-btn" type="submit">Login</button><br><br>
 
             <a href="register.php" id="link">Create a new account</a>
+            </div>
         </form>
     </div>
     
