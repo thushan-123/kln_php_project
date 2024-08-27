@@ -9,6 +9,14 @@
 }
 
 
-
+// Create a function  check the admin cookie is expired
+function cookie_checker_admin(){
+    if ($_SESSION['admin']['token'] != $_COOKIE['token']){
+        echo "<script> window.alert('Cookie is expire. Please Login here')</script>";
+        header("Location: admin.php");
+    }else{
+        return true;
+    }
+}
 
 ?>
