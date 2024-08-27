@@ -12,6 +12,9 @@ if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != tr
     header('Location: ../admin.php');
 }
 
+
+
+
 if (isset($_POST['delete_category'])){
     try{
 
@@ -26,6 +29,7 @@ if (isset($_POST['delete_category'])){
     }
 }
 
+// Js handele show or hide flowers_category
 echo "<div id='flowers_category'>";
     echo "<h4>Flowers Category</h4>";
     echo "<div id='show_category'>";
@@ -76,13 +80,50 @@ echo "<div id='flowers_category'>";
         }
     echo "</div>";
 
+if (cookie_checker_admin()){
+    if (isset($_POST["add_category"])){
+        // form validation
+        $add_category = user_input($_POST['category_name']);
+
+        // Void sql injection
+        $add_category = mysqli_real_escape_string($connection, $add_category);
+
+        if (!empty($add_category)){
+            $query = 'INSERT INTO flowers_category(category_name) VALUES ($add_category)';
+
+            try{
+                if (mysqli_query($connection, $query)){
+                    logger('INFO', 'category: $add_category added successfully');
+                    info_alert("Category is added Successfully");
+                }else{
+                    throw new Exception(mysqli_error($connection));
+                }
+            }catch(Exception $e){
+                logger('ERROR', $e->getMessage());
+            }
+        }else{
+            logger('WARNING', "user input is empty");
+            error_alert("Input is Empty");
+
+        }
+    }
+}
+
     echo "<div id='add_category'>";
+
+    echo "<form action='' method='post' id='add_flower_category'>
+
+            <lable>Category Name :</lable> &nbsp
+            <input type='text' name='category_name' id='category_name'>
+            <br><br>
+            <button type='submit' name='add_category'>ADD</button>
+            </form>";
     
     echo "</div>";
 
 echo "</div>";
 
-
+// js handele show or hide upload_flowers
 echo "<div id='upload_flowers'>";
 
 echo "</div>";

@@ -19,4 +19,14 @@ function cookie_checker_admin(){
     }
 }
 
+// alert the info mation function
+function info_alert($msg){
+    echo "<script>window.alert($msg)</script>";
+}
+
+// alert the error 
+function error_alert($msg){
+    echo "<script>window.alert($msg)</script>";
+}
+
 ?>
