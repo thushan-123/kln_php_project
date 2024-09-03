@@ -172,3 +172,51 @@
 [2024-08-26 06:27:17]  [INFO] - 1 id delete successfully
 [2024-08-26 06:27:17]  [INFO] - get flowers_category data successfully
 [2024-08-26 06:36:29]  [INFO] - 1 id delete successfully
+[2024-08-27 17:10:59]  [INFO] - Admin: thush login successfully. Redirect to the admin_panel
+[2024-08-27 17:10:59]  [INFO] - get the supplier data in db successfully
+[2024-08-27 17:10:59]  [INFO] - get flowers_category data successfully
+[2024-08-27 17:13:41]  [INFO] - get flowers_category data successfully
+[2024-08-27 17:14:03]  [INFO] - get flowers_category data successfully
+[2024-08-27 17:14:03]  [ERROR] - Unknown column '$add_category' in 'field list'
+[2024-08-27 17:14:07]  [INFO] - get flowers_category data successfully
+[2024-08-27 17:14:07]  [ERROR] - Unknown column '$add_category' in 'field list'
+[2024-08-27 17:15:13]  [INFO] - get flowers_category data successfully
+[2024-08-27 17:15:13]  [INFO] - category: $add_category added successfully
+[2024-08-27 17:15:16]  [INFO] - get flowers_category data successfully
+[2024-08-27 17:15:16]  [INFO] - category: $add_category added successfully
+[2024-09-03 03:13:16]  [INFO] - Admin: thush login successfully. Redirect to the admin_panel
+[2024-09-03 03:13:16]  [INFO] - get the supplier data in db successfully
+[2024-09-03 03:13:16]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:16:15]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:16:48]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:16:48]  [INFO] - category: $add_category added successfully
+[2024-09-03 03:16:52]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:16:52]  [INFO] - category: $add_category added successfully
+[2024-09-03 03:17:21]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:17:21]  [INFO] - category: $add_category added successfully
+[2024-09-03 03:18:27]  [INFO] - 4 id delete successfully
+[2024-09-03 03:18:27]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:18:30]  [INFO] - 7 id delete successfully
+[2024-09-03 03:18:30]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:18:32]  [INFO] - 8 id delete successfully
+[2024-09-03 03:18:32]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:18:35]  [INFO] - 8 id delete successfully
+[2024-09-03 03:18:35]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:18:39]  [INFO] - 8 id delete successfully
+[2024-09-03 03:18:39]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:18:41]  [INFO] - 8 id delete successfully
+[2024-09-03 03:18:41]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:25:56]  [INFO] - 8 id delete successfully
+[2024-09-03 03:25:56]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:25:59]  [INFO] - category: $add_category added successfully
+[2024-09-03 03:25:59]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:26:02]  [INFO] - category: $add_category added successfully
+[2024-09-03 03:26:02]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:26:06]  [INFO] - category: $add_category added successfully
+[2024-09-03 03:26:06]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:26:38]  [INFO] - category: $add_category added successfully
+[2024-09-03 03:26:38]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:26:39]  [INFO] - 12 id delete successfully
+[2024-09-03 03:26:39]  [INFO] - get flowers_category data successfully
+[2024-09-03 03:26:41]  [INFO] - 11 id delete successfully
+[2024-09-03 03:26:41]  [INFO] - get flowers_category data successfully

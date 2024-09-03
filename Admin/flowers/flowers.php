@@ -4,9 +4,11 @@ session_start();
 error_reporting(E_ALL);
 ini_set("display_errors",1);
 
-include_once __DIR__ . '/../Function/function.php';
-include_once __DIR__ . '/../Connection/connection.php';
+include_once __DIR__ . '/../../Function/function.php';
+include_once __DIR__ . '/../../Connection/connection.php';
 
+
+// admin protection page
 if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != true || $_SESSION['admin']['token'] != $_COOKIE['token']){
 
     header('Location: ../admin.php');
@@ -26,6 +28,33 @@ if (isset($_POST['delete_category'])){
 
     }catch(Exception $e){
         logger('ERROR', $e->getMessage());
+    }
+}
+
+if (isset($_POST["add_category"])){
+    // form validation
+    $add_category = user_input($_POST['category_name']);
+
+    // Void sql injection
+    $add_category = mysqli_real_escape_string($connection, $add_category);
+
+    if (!empty($add_category)){
+        $query = "INSERT INTO flowers_category(category_name) VALUES ('$add_category')";
+
+        try{
+            if (mysqli_query($connection, $query)){
+                logger('INFO', 'category: $add_category added successfully');
+                info_alert("Category is added Successfully");
+            }else{
+                throw new Exception(mysqli_error($connection));
+            }
+        }catch(Exception $e){
+            logger('ERROR', $e->getMessage());
+        }
+    }else{
+        logger('WARNING', "user input is empty");
+        error_alert("Input is Empty");
+
     }
 }
 
@@ -81,34 +110,6 @@ echo "<div id='flowers_category'>";
     echo "</div>";
 
 if (cookie_checker_admin()){
-    if (isset($_POST["add_category"])){
-        // form validation
-        $add_category = user_input($_POST['category_name']);
-
-        // Void sql injection
-        $add_category = mysqli_real_escape_string($connection, $add_category);
-
-        if (!empty($add_category)){
-            $query = 'INSERT INTO flowers_category(category_name) VALUES ($add_category)';
-
-            try{
-                if (mysqli_query($connection, $query)){
-                    logger('INFO', 'category: $add_category added successfully');
-                    info_alert("Category is added Successfully");
-                }else{
-                    throw new Exception(mysqli_error($connection));
-                }
-            }catch(Exception $e){
-                logger('ERROR', $e->getMessage());
-            }
-        }else{
-            logger('WARNING', "user input is empty");
-            error_alert("Input is Empty");
-
-        }
-    }
-}
-
     echo "<div id='add_category'>";
 
     echo "<form action='' method='post' id='add_flower_category'>
@@ -120,6 +121,10 @@ if (cookie_checker_admin()){
             </form>";
     
     echo "</div>";
+    
+}
+
+    
 
 echo "</div>";
 
