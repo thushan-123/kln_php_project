@@ -14,9 +14,6 @@ if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != tr
     header('Location: ../admin.php');
 }
 
-
-
-
 if (isset($_POST['delete_category'])){
     try{
 
@@ -45,6 +42,8 @@ if (isset($_POST["add_category"])){
             if (mysqli_query($connection, $query)){
                 logger('INFO', 'category: $add_category added successfully');
                 info_alert("Category is added Successfully");
+                header("Location: ./flowers.php");
+                
             }else{
                 throw new Exception(mysqli_error($connection));
             }
@@ -53,10 +52,13 @@ if (isset($_POST["add_category"])){
         }
     }else{
         logger('WARNING', "user input is empty");
-        error_alert("Input is Empty");
-
+        //error_alert("Input is Empty");
+        echo"<script>window.alert('eqwr')</script>";
     }
 }
+
+
+
 
 // Js handele show or hide flowers_category
 echo "<div id='flowers_category'>";
@@ -88,7 +90,7 @@ echo "<div id='flowers_category'>";
 
                         echo "<tr><td>$category_name</td>
                             <td>
-                            <form action='' method='post'>
+                            <form action='flowers.php' method='post'>
                             <input type='hidden' name='category_id' value='$category_id'>
                             <button type='submit' name='delete_category'>Delete</button>
                             </form>
@@ -112,7 +114,7 @@ echo "<div id='flowers_category'>";
 if (cookie_checker_admin()){
     echo "<div id='add_category'>";
 
-    echo "<form action='' method='post' id='add_flower_category'>
+    echo "<form action='flowers.php' method='post' id='add_flower_category'>
 
             <lable>Category Name :</lable> &nbsp
             <input type='text' name='category_name' id='category_name'>
