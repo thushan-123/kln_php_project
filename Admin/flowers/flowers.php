@@ -4,8 +4,9 @@ session_start();
 error_reporting(E_ALL);
 ini_set("display_errors",1);
 
-include_once __DIR__ . '/../../Function/function.php';
-include_once __DIR__ . '/../../Connection/connection.php';
+include_once  '../../Function/function.php';
+include_once '../../Function/Admin/adminFunction.php';
+include_once '../../Connection/connection.php';
 
 
 // admin protection page
@@ -56,8 +57,6 @@ if (isset($_POST["add_category"])){
         echo"<script>window.alert('eqwr')</script>";
     }
 }
-
-
 
 
 // Js handele show or hide flowers_category
@@ -132,6 +131,37 @@ echo "</div>";
 
 // js handele show or hide upload_flowers
 echo "<div id='upload_flowers'>";
+
+if(cookie_checker_admin()){
+    
+    echo "<div id='flower_upload_form'>";
+    echo "<h4> Add flower </h4>";
+
+        echo"<form action='' method='post' id='upload_flower_form'>
+                <input type='text' name='flower_name' id='flower_name' placeholder='Flower Name' required ><br><br>
+                <select id='category_name' name='category_name'>";
+                    //<option value='category_id'> categories </option>
+                    try{
+                        $query = "SELECT * FROM flowers_category";
+                        $result = mysqli_query($connection, $query);
+                        
+
+                        if (mysqli_num_rows($result) > 0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                $categoryId = $row["category_id"];
+                                $categoryName = $row["category_name"];
+                                echo "<option value='$categoryId'>$categoryName</option>";
+                            }
+                        }
+                    }catch(Exception $e){
+                        logger("ERROR", $e->getMessage());
+                    }
+                echo "</select><br><br>
+                <input type='file' name='image' accept='image/*' required>";
+        echo "</form>";
+    
+    echo "</div>";
+}
 
 echo "</div>";
 
