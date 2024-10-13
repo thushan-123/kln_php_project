@@ -26,23 +26,3 @@ function get_flowers_categories(){
 }
 
 ?>
-
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Check if file was uploaded
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $upload_dir = 'uploads/';  // Directory to save uploaded files
-        $filename = basename($_FILES['image']['name']);
-        $target_file = $upload_dir . $filename;
-
-        // Move the uploaded file to the destination directory
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
-            echo "The image has been uploaded successfully.";
-        } else {
-            echo "Sorry, there was an error uploading your image.";
-        }
-    } else {
-        echo "No image uploaded or there was an error with the upload.";
-    }
-}
-?>

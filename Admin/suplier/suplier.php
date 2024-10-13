@@ -8,9 +8,9 @@ include_once  '../../Function/function.php';
 include_once  '../../Connection/connection.php';
 
 // admin protection page
-if(!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != true || $_SESSION['admin']['token'] != $_COOKIE['token']) {
+if(!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != true) {
 
-    header('Location ../admin.php');
+    header(header: 'Location ../admin.php');
 }
 
 // verify the suplier sumbit the button

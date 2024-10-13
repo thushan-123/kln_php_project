@@ -15,7 +15,7 @@ echo "</pre>";
 
 
 // admin protection page
-if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != true || $_SESSION['admin']['token'] != $_COOKIE['token']){
+if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != true ){
 
     // Redirect to login page unauthorized access
     header('Location: admin.php');

@@ -1,3 +1,5 @@
+USE kln_php;
+
 CREATE TABLE users (user_id int(10) AUTO_INCREMENT NOT NULL,
                     user_name VARCHAR(20) NOT NULL,
                     email VARCHAR(30) NOT NULL UNIQUE,
@@ -40,13 +42,16 @@ CREATE TABLE flowers(flower_id VARCHAR(100),
                      flower_name VARCHAR(20),
                      quantity INT(5),
                      category_id INT(5),
+                     description VARCHAR(255),
+                     other_info JSON,
                      PRIMARY KEY (flower_id),
-                     Foreign Key (category_id) REFERENCES flowers_category(category_id)
+                     Foreign Key (category_id) REFERENCES flowers_category(category_id),
                      INDEX idx_flower_name(flower_name));
 
 
 CREATE TABLE flowers_prices(flower_id VARCHAR(100) UNIQUE,
-                            price INT(5),
+                            sale_price INT(5),
+                            
                             today_dicount INT(3),
                             loyalty_discount INT(3),
                             price_off INT(5),
@@ -54,8 +59,11 @@ CREATE TABLE flowers_prices(flower_id VARCHAR(100) UNIQUE,
                             INDEX idx_flower_id(flower_id));
 
 CREATE TABLE images_links(flower_id VARCHAR(100) UNIQUE,
-                          image_name VARCHAR(100) UNIQUE,
-                          file_path VARCHAR,
+                          file_path VARCHAR(200),
                           Foreign Key (flower_id) REFERENCES flowers(flower_id),
                           INDEX idx_flower_id(flower_id),
                           INDEX idx_image_name(image_name));
+
+
+
+

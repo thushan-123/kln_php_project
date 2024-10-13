@@ -5,14 +5,13 @@ error_reporting(E_ALL);
 ini_set("display_errors",1);
 
 include_once  '../../Function/function.php';
-include_once '../../Function/Admin/adminFunction.php';
 include_once '../../Connection/connection.php';
 
 
 // admin protection page
-if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != true || $_SESSION['admin']['token'] != $_COOKIE['token']){
+if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != true){
 
-    header('Location: ../admin.php');
+    header("Location: ../admin.php");
 }
 
 if (isset($_POST['delete_category'])){
@@ -58,6 +57,49 @@ if (isset($_POST["add_category"])){
     }
 }
 
+if(isset($_POST["flower_upload"] )){
+    try{
+        if(!isset($_POST['flower_name']) || !isset($_POST['category_name']) || !isset($_FILES['image'])){
+            echo "<script> window.alert('required all fields')</script>";
+            exit();
+        }
+
+        // auto gen flower_id
+        $flower_id = uniqid();
+        $flower_name = user_input($_POST["flower_name"]);
+        $flower_category_id = (int) $_POST["category_name"];
+        $flower_description = user_input($_POST['description']);
+
+        $image_tmp_name = $_FILES['image']['tmp_name'];
+        $image_size = $_FILES['image']['size'];
+        
+
+       // $image_type = strtolower(pathinfo($_FILES['image']['type'],PATHINFO_EXTENSION));
+
+        $file_name = $_FILES['image']['name'];
+
+        $save_dir = (string) "uploads/images/". $file_name;
+
+        if(move_uploaded_file($image_tmp_name,$save_dir)){
+            // save to data to database
+            $insert_flower_query = "INSERT INTO flowers(flower_id,flower_name,category_id,description) VALUES ('$flower_id','$flower_name','$flowers_category_id','$$flower_description')";
+            $insert_image_query = "INSERT INTO images_links(flower_id,file_path) VALUES ('$flower_id','$$save_dir')";
+
+            if(mysqli_query($connection,$insert_flower_query) && mysqli_query($connection,$insert_image_query)){
+                header("Location: ./flowers.php");
+            }
+            
+        }
+
+        echo $flower_name;
+        echo "<pre>";
+        print_r($_FILES['image']);
+        echo "</pre>";
+
+    }catch(Exception $e){
+        logger("ERROR", $e->getMessage());
+    }
+}
 
 // Js handele show or hide flowers_category
 echo "<div id='flowers_category'>";
@@ -137,7 +179,7 @@ if(cookie_checker_admin()){
     echo "<div id='flower_upload_form'>";
     echo "<h4> Add flower </h4>";
 
-        echo"<form action='' method='post' id='upload_flower_form'>
+        echo"<form action='flowers.php' method='post' id='upload_flower_form' enctype='multipart/form-data'>
                 <input type='text' name='flower_name' id='flower_name' placeholder='Flower Name' required ><br><br>
                 <select id='category_name' name='category_name'>";
                     //<option value='category_id'> categories </option>
@@ -157,7 +199,9 @@ if(cookie_checker_admin()){
                         logger("ERROR", $e->getMessage());
                     }
                 echo "</select><br><br>
-                <input type='file' name='image' accept='image/*' required>";
+                <textarea name='description' id='description' placeholder='Description'  required></textarea><br><br>
+                <input type='file' name='image' accept='image/*' required><br><br>
+                <button type='submit' name='flower_upload'>upload</button>'";
         echo "</form>";
     
     echo "</div>";
