@@ -36,7 +36,7 @@ if (isset($_POST["add_category"])){
     $add_category = mysqli_real_escape_string($connection, $add_category);
 
     if (!empty($add_category)){
-        $query = "INSERT INTO flowers_category(category_name) VALUES ('$add_category')";
+        $query = "INSERT INTO categories(category_name) VALUES ('$add_category')";
 
         try{
             if (mysqli_query($connection, $query)){
@@ -57,47 +57,69 @@ if (isset($_POST["add_category"])){
     }
 }
 
-if(isset($_POST["flower_upload"] )){
-    try{
-        if(!isset($_POST['flower_name']) || !isset($_POST['category_name']) || !isset($_FILES['image'])){
-            echo "<script> window.alert('required all fields')</script>";
-            exit();
-        }
-
-        // auto gen flower_id
-        $flower_id = uniqid();
-        $flower_name = user_input($_POST["flower_name"]);
-        $flower_category_id = (int) $_POST["category_name"];
-        $flower_description = user_input($_POST['description']);
-
-        $image_tmp_name = $_FILES['image']['tmp_name'];
-        $image_size = $_FILES['image']['size'];
+// flower upload
+if (isset($_POST["flower_upload"])) {
+    try {
         
-
-       // $image_type = strtolower(pathinfo($_FILES['image']['type'],PATHINFO_EXTENSION));
-
-        $file_name = $_FILES['image']['name'];
-
-        $save_dir = (string) "uploads/images/". $file_name;
-
-        if(move_uploaded_file($image_tmp_name,$save_dir)){
-            // save to data to database
-            $insert_flower_query = "INSERT INTO flowers(flower_id,flower_name,category_id,description) VALUES ('$flower_id','$flower_name','$flowers_category_id','$$flower_description')";
-            $insert_image_query = "INSERT INTO images_links(flower_id,file_path) VALUES ('$flower_id','$$save_dir')";
-
-            if(mysqli_query($connection,$insert_flower_query) && mysqli_query($connection,$insert_image_query)){
-                header("Location: ./flowers.php");
-            }
+        if (!isset($_POST['flower_name']) || !isset($_FILES['image'])) {
+            echo "<script> window.alert('All fields are required')</script>";
             
         }
 
-        echo $flower_name;
-        echo "<pre>";
-        print_r($_FILES['image']);
-        echo "</pre>";
+        $flower_id = uniqid();
+        $flower_name = user_input($_POST["flower_name"]);
+        $flower_description = user_input($_POST['description']);
+        $sale_price = $_POST['sale_price'];
 
-    }catch(Exception $e){
+        $image_tmp_name = $_FILES['image']['tmp_name'];
+        $image_size = $_FILES['image']['size'];
+        $file_name = $_FILES['image']['name'];
+        
+        $file_extension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+        $unique_file_name = uniqid() . '.' . $file_extension;
+        
+        $save_dir = (string) "../../uploads/" . $unique_file_name;
+        $upload_dir = (string) "uploads/" . $unique_file_name;
+
+        if (move_uploaded_file($image_tmp_name, $save_dir)) {
+            
+            $insert_flower_query = "INSERT INTO flowers(flower_id, flower_name, description,sale_price) 
+                                    VALUES ('$flower_id', '$flower_name', '$flower_description','$sale_price')";
+            $insert_image_query = "INSERT INTO flower_images(flower_id, dir_path) 
+                                   VALUES ('$flower_id', '$upload_dir')";
+
+            
+            if (mysqli_query($connection, $insert_flower_query) && mysqli_query($connection, $insert_image_query)) {
+                header("Location: ./flowers.php");  // reload the this page
+            } else {
+                echo "<script> window.alert('Database error')</script>";
+            }
+        } else {
+            echo "<script> window.alert('Failed to upload image')</script>";
+        }
+
+    } catch (Exception $e) {
         logger("ERROR", $e->getMessage());
+    }
+}
+
+if (isset($_POST['submit_flowers_categories'])){
+    $category_id = $_POST['category_id'];
+    $flowers_id_array = $_POST['flower_id_array'];
+
+    $delete_query = "DELETE FROM flower_categories WHERE category_id='$category_id'";
+
+    if(mysqli_query($connection,$delete_query)){
+        foreach($flowers_id_array as $flower_id){
+            $insert_query = "INSERT INTO flower_categories(flower_id,category_id) VALUES ('$flower_id','$category_id')";
+
+            try{
+                mysqli_query($connection,$insert_query);
+            } catch (Exception $e){
+                logger("ERROR", $e->getMessage());
+            }
+        }
+        header("Location: ./flowers.php");
     }
 }
 
@@ -107,10 +129,10 @@ echo "<div id='flowers_category'>";
     echo "<div id='show_category'>";
         // show the all category
 
-        if (cookie_checker_admin()){
+       
             try{
 
-                $query = "SELECT * FROM flowers_category";
+                $query = "SELECT * FROM categories";
 
                 $result = mysqli_query($connection, $query);
 
@@ -149,10 +171,10 @@ echo "<div id='flowers_category'>";
             }catch(Exception $e){
                 logger("ERROR", $e->getMessage());
             }
-        }
+        
     echo "</div>";
 
-if (cookie_checker_admin()){
+
     echo "<div id='add_category'>";
 
     echo "<form action='flowers.php' method='post' id='add_flower_category'>
@@ -165,7 +187,6 @@ if (cookie_checker_admin()){
     
     echo "</div>";
     
-}
 
     
 
@@ -174,17 +195,105 @@ echo "</div>";
 // js handele show or hide upload_flowers
 echo "<div id='upload_flowers'>";
 
-if(cookie_checker_admin()){
+
     
     echo "<div id='flower_upload_form'>";
     echo "<h4> Add flower </h4>";
 
         echo"<form action='flowers.php' method='post' id='upload_flower_form' enctype='multipart/form-data'>
                 <input type='text' name='flower_name' id='flower_name' placeholder='Flower Name' required ><br><br>
-                <select id='category_name' name='category_name'>";
+                
+                <textarea name='description' id='description' placeholder='Description'  required/></textarea><br><br>
+                <input type='number' name='sale_price' placeholder='Flower sale price' required/><br><br>
+                <input type='file' name='image' accept='image/*' required><br><br>
+                <button type='submit' name='flower_upload'>upload</button>'";
+        echo "</form>";
+    
+    echo "</div>";
+
+
+echo "</div>";
+
+echo "<div id=flower_categories>";
+    echo "<h4> Flowers Add to Categories</h4>";
+
+    echo "<form action='flowers.php' method='post' id='flowers-categories'>";
+
+        $query = "SELECT * FROM categories";
+        $result_set = mysqli_query($connection,$query);
+
+        echo "<lable>Select Category</lable>&nbsp
+              <select id='category_name' name='category_id'>";
+
+              if(mysqli_num_rows($result) > 0){
+                while ($row = mysqli_fetch_assoc($result_set)){
+                    $category_id = $row['category_id'];
+                    $category_name = $row['category_name'];
+                    echo "<option value='$category_id'>$category_name</option>";
+
+                }
+              }
+              echo "</select> &nbsp 
+                    <button type='submit' name='search_category'>Search </button>
+    </form>";
+    
+
+              // get the flowers detail from flowers category
+    if(isset($_POST['search_category'])){
+
+        $category_id = $_POST['category_id'];
+
+        $query = "SELECT * FROM categories WHERE category_id='$category_id' LIMIT 1";
+        $result = mysqli_query($connection,$query);
+        $category_name = mysqli_fetch_assoc($result)['category_name'];
+
+        echo "<form action='flowers.php' method='post'> 
+                    <h4>Select a flowers - category name: $category_name</h4>
+                    <input type='hidden' name='category_id' value='$category_id'/>";
+
+              $query = "SELECT flowers.flower_id,flowers.flower_name,flower_images.dir_path FROM flowers INNER JOIN flower_images ON flowers.flower_id=flower_images.flower_id";
+
+              $flowers_data_set = mysqli_query($connection,$query);
+
+              if(mysqli_num_rows($flowers_data_set)> 0){
+                while($row = mysqli_fetch_assoc($flowers_data_set)){
+                    $flower_id = $row['flower_id'];
+                    $flower_name = $row['flower_name'];
+                    $dir_path = $row ['dir_path'];
+
+                    // ckek flower_id in flower_categories table
+                    $check_query = "SELECT * FROM flower_categories WHERE flower_id='$flower_id' AND category_id='$category_id' LIMIT 1";
+                    $result = mysqli_query($connection,$check_query);
+
+                    if (mysqli_num_rows($result) > 0){
+                        echo "<input type='checkbox' name='flowers[]' value='$flower_id' checked>
+                            <lable>$flower_name</lable>
+                            <img src='../../$dir_path' alt='no image' width='100px' height='100px'/>";
+
+                    }else{
+                        echo "<input type='checkbox' name='flower_id_array[]' value='$flower_id'>
+                            <lable>$flower_name</lable>
+                            <img src='../../$dir_path' alt='no image' width='100px' height='100px'/>";
+                    }
+                    
+
+                    
+                }
+              }
+              echo "<button type='submit' name='submit_flowers_categories'>Insert</button>
+                </form>";
+    }
+              
+
+
+echo "</div>";
+
+
+/*
+<select id='category_name' name='category_name'>";
                     //<option value='category_id'> categories </option>
                     try{
-                        $query = "SELECT * FROM flowers_category";
+                        $query = "SELECT * FROM categories";
                         $result = mysqli_query($connection, $query);
                         
 
@@ -199,15 +308,6 @@ if(cookie_checker_admin()){
                         logger("ERROR", $e->getMessage());
                     }
                 echo "</select><br><br>
-                <textarea name='description' id='description' placeholder='Description'  required></textarea><br><br>
-                <input type='file' name='image' accept='image/*' required><br><br>
-                <button type='submit' name='flower_upload'>upload</button>'";
-        echo "</form>";
-    
-    echo "</div>";
-}
 
-echo "</div>";
-
-
+                */
 ?>
