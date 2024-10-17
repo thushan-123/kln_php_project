@@ -88,6 +88,7 @@ if (isset($_POST["flower_upload"])) {
             $insert_image_query = "INSERT INTO flower_images(flower_id, dir_path) 
                                    VALUES ('$flower_id', '$upload_dir')";
 
+            logger("INFO","upload file successfully");
             
             if (mysqli_query($connection, $insert_flower_query) && mysqli_query($connection, $insert_image_query)) {
                 header("Location: ./flowers.php");  // reload the this page

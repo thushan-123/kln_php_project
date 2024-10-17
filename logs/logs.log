@@ -633,3 +633,12 @@
 [2024-10-16 13:12:45]  [INFO] - get flowers_category data successfully
 [2024-10-16 13:18:12]  [INFO] - get flowers_category data successfully
 [2024-10-16 13:18:17]  [INFO] - get flowers_category data successfully
+[2024-10-17 02:31:36]  [INFO] - Admin: thush login successfully. Redirect to the admin_panel
+[2024-10-17 10:50:02]  [INFO] - Admin: thush login successfully. Redirect to the admin_panel
+[2024-10-17 13:08:18]  [ERROR] - Data truncated for column 'loyalty_discount' at row 1
+[2024-10-17 13:08:58]  [ERROR] - Data truncated for column 'loyalty_discount' at row 1
+[2024-10-17 13:08:58]  [ERROR] - Unknown column 'loyalty_dicount' in 'field list'
+[2024-10-17 13:11:12]  [ERROR] - Data truncated for column 'loyalty_discount' at row 1
+[2024-10-17 13:13:53]  [ERROR] - Data truncated for column 'loyalty_discount' at row 1
+[2024-10-17 14:24:13]  [ERROR] - Incorrect date value: '2' for column `kln_php`.`flower_discounts`.`price_off_end` at row 1
+[2024-10-17 14:24:13]  [ERROR] - Incorrect date value: '2' for column `kln_php`.`flower_discounts`.`price_off_end` at row 1
