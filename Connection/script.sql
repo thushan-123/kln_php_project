@@ -56,7 +56,7 @@ CREATE TABLE flower_categories (flower_id VARCHAR(100),
 
 CREATE TABLE flower_images(flower_id VARCHAR(100),
                             dir_path TEXT,
-                            FOREIGN KEY (flower_id) REFERENCES flowers(flower_id) ON DELETE CASCADE
+                            FOREIGN KEY (flower_id) REFERENCES flowers(flower_id) ON DELETE CASCADE,
                             INDEX idx_flower_id(flower_id));
 
 
@@ -64,11 +64,34 @@ CREATE TABLE flower_discounts(flower_id VARCHAR(100) UNIQUE,
                             today_dicount INT(3),
                             today_dicount_applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                             loyalty_discount INT(3),
-                            layalty_discount_applied_at DEFAULT CURRENT_TIMESTAMP,
+                            layalty_discount_applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                             price_off INT(5),
                             price_off_applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                             Foreign Key (flower_id) REFERENCES flowers(flower_id) ON DELETE CASCADE,
                             INDEX idx_flower_id(flower_id));
+
+CREATE TABLE comments(flower_id VARCHAR(100),
+                      user_id INT(10),
+                      comment TEXT,
+                      FOREIGN KEY (flower_id) REFERENCES flowers(flower_id) ON DELETE CASCADE,
+                      FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+                      INDEX idx_flower_id(flower_id));
+
+CREATE TABLE orders(order_id INT(10) PRIMARY KEY AUTO_INCREMENT,
+                    order_date DATE DEFAULT CURRENT_DATE,
+                    flower_id VARCHAR(100),
+                    quantity INT(5),
+                    suplier_id INT(10),
+                    FOREIGN KEY (flower_id) REFERENCES flowers(flower_id) ON DELETE CASCADE,
+                    FOREIGN KEY (suplier_id) REFERENCES supliers(suplier_id) ON DELETE CASCADE
+);
+
+ALTER TABLE orders ADD isDelivered BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE orders ADD delivered_date DATE;
+ALTER TABLE orders ADD isAccept_suplier BOOLEAN DEFAULT FALSE;
+ALTER TABLE orders ADD accept_suplier_date DATE;
+
 
 SET GLOBAL event_scheduler = ON;
 

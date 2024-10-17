@@ -642,3 +642,12 @@
 [2024-10-17 13:13:53]  [ERROR] - Data truncated for column 'loyalty_discount' at row 1
 [2024-10-17 14:24:13]  [ERROR] - Incorrect date value: '2' for column `kln_php`.`flower_discounts`.`price_off_end` at row 1
 [2024-10-17 14:24:13]  [ERROR] - Incorrect date value: '2' for column `kln_php`.`flower_discounts`.`price_off_end` at row 1
+[2024-10-17 14:30:55]  [INFO] - Admin: thush login successfully. Redirect to the admin_panel
+[2024-10-17 17:34:43]  [INFO] - retrieve data from users table successfully
+[2024-10-17 17:34:43]  [WARNING] - suplier login invalid username or password
+[2024-10-17 17:35:13]  [INFO] - retrieve data from users table successfully
+[2024-10-17 17:35:13]  [WARNING] - suplier login invalid username or password
+[2024-10-17 17:35:51]  [INFO] - retrieve data from users table successfully
+[2024-10-17 17:35:51]  [WARNING] - suplier login invalid username or password
+[2024-10-17 17:36:50]  [INFO] - retrieve data from users table successfully
+[2024-10-17 17:36:50]  [INFO] - Suplier :  login successfull. redirect to the suplier_panel page.
