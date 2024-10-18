@@ -17,7 +17,12 @@
     if(isset($_POST['accept_admin_order_request'])){
 
         $order_id = (int) $_POST['order_id'];
-        $update_query = "UPDATE orders SET isAccept_suplier=true ,accept_suplier_date = CURRENT_DATE WHERE order_id = '$order_id' ";
+        $item_price = (float) user_input($_POST['item_price']);
+
+        if (!isset($item_price)){
+            echo "<script>window.alert('enter the item price')</script>";
+        }
+        $update_query = "UPDATE orders SET isAccept_suplier=true ,accept_suplier_date = CURRENT_DATE, purchase_price= '$item_price' WHERE order_id = '$order_id' ";
 
         if (mysqli_query($connection,$update_query)){
             header("Location: ./suplier_order.php");
@@ -38,6 +43,7 @@
                     <th>Flower Name</th>
                     <th>Request Quantity</th>
                     <th>Admin Requested Date</th>
+                    <th>Add Item Price</th>
                     <th></th>
                 </tr>";
 
@@ -56,12 +62,18 @@
                                 <td>$flower_name</td>
                                 <td>$quantity</td>
                                 <td>$requested_date</td>
-                                <td>
+                                
                                     <form action='suplier_order.php' method='post'>
                                         <input type='hidden' name='order_id' value='$order_id'>
-                                        <button type='submit' name='accept_admin_order_request'>Accept Order</button>
+                                        <td>
+                                            <input type='number' name='item_price'>
+                                        </td>
+                                        <td>
+                                            <button type='submit' name='accept_admin_order_request'>Deliver Order</button>
+                                        </td>
+                                        
                                     </form>
-                                </td>
+                                
                               </tr>";
                     }
                 }

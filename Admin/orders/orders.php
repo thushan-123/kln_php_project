@@ -28,7 +28,7 @@
     // delete order
 
     if(isset($_POST['delete_order'])){
-        $order_id = (int) user_input($_POST['order_id']);
+        $order_id = $_POST['order_id'];
 
         $delete_query = "DELETE FROM orders WHERE order_id = '$order_id'";
 
@@ -62,7 +62,7 @@
                 <label>Select Supplier: </label> &nbsp;
                 <select name='suplier_id' required>";
 
-                    $query = "SELECT * FROM supliers";
+                    $query = "SELECT * FROM supliers WHERE verify=true";
                     $result_set = mysqli_query($connection, $query);
 
                     if(mysqli_num_rows($result_set) > 0){
@@ -93,6 +93,7 @@
                 <h3>Pending Order Requests</h3>
                 <table border='1'>
                     <tr>
+                        <th>Order ID</th>
                         <th>Flower Name</th>
                         <th>Quantity</th>
                         <th>Order Date</th>
@@ -119,6 +120,7 @@
 
                 echo "
                 <tr>
+                    <td>$order_id</td>
                     <td>$flower_name</td>
                     <td>$quantity</td>
                     <td>$order_date</td>
@@ -127,6 +129,7 @@
                         <form action='orders.php' method='post'>
                         <input type='hidden' name='order_id' value='$order_id'>
                         <button type='submit' name='delete_order'>Delete Order</button>
+                        </form>
                     </td>
                 </tr>
                 ";

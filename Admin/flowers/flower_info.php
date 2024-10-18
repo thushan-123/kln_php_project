@@ -7,8 +7,9 @@
     include_once "../../Function/function.php";
 
     // session protection
-    if(!isset($_SESSION['admin']['isLogin']) || $_SESSION['admin']['isLogin'] != true){
-        header("Location ../admin.php");
+    if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != true){
+
+        header("Location: ../admin.php");
     }
 
 

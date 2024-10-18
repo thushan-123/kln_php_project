@@ -11,6 +11,18 @@ CREATE TABLE users (user_id int(10) AUTO_INCREMENT NOT NULL,
                     Index idx_email(email),
                     Index idx_user_name(user_name));
 
+CREATE TABLE loyalty_users(loyalty_id VARCHAR(36),
+                           points_blance INT(5),
+                           user_id INT(10),
+                           FOREIGN KEY (user_id) REFERENCES users(user_id));
+
+CREATE TABLE shopping_cart(user_id INT(10),
+                           flower_id VARCHAR(100),
+                           quantity INT(5),
+                           PRIMARY KEY (user_id,flower_id),
+                           FOREIGN KEY (user_id) REFERENCES users(user_id),
+                           FOREIGN KEY (flower_id) REFERENCES flowers(flower_id));
+
 CREATE TABLE admin (admin_id INT(10) AUTO_INCREMENT,
                     admin_name VARCHAR(20) NOT NULL UNIQUE,
                     email VARCHAR(30) NOT NULL UNIQUE,
@@ -46,6 +58,8 @@ CREATE TABLE flowers(flower_id VARCHAR(100),
                      other_info JSON,
                      PRIMARY KEY (flower_id),
                      INDEX idx_flower_name(flower_name));
+
+ALTER TABLE flowers ADD purchase_price FLOAT;
 
 CREATE TABLE flower_categories (flower_id VARCHAR(100),
                                 category_id INT(5),
@@ -85,6 +99,9 @@ CREATE TABLE orders(order_id INT(10) PRIMARY KEY AUTO_INCREMENT,
                     FOREIGN KEY (flower_id) REFERENCES flowers(flower_id) ON DELETE CASCADE,
                     FOREIGN KEY (suplier_id) REFERENCES supliers(suplier_id) ON DELETE CASCADE
 );
+ALTER TABLE orders ADD purchase_price FLOAT;
+
+ALTER TABLE orders ADD order_sale_price FLOAT DEFAULT 0;
 
 ALTER TABLE orders ADD isDelivered BOOLEAN DEFAULT FALSE;
 
