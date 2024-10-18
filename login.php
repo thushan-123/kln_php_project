@@ -96,8 +96,8 @@ try{
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
             <?php 
                 
-                if (isset($_POST['UserRegister'])){
-                    $Username = $_POST['Username'];
+                if (isset($_GET['UserRegister'])){
+                    $Username = $_GET['Username'];
                     echo "<div class='welcome-box'><b> Hello $Username Please Login </b></div>";
                 }
                 

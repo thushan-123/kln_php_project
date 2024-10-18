@@ -688,3 +688,5 @@
 [2024-10-18 09:01:52]  [INFO] - get the supplier data in db successfully
 [2024-10-18 09:01:57]  [INFO] - get flowers_category data successfully
 [2024-10-18 09:02:57]  [INFO] - get the supplier data in db successfully
+[2024-10-18 16:31:56]  [INFO] - Retrieve data from Users table Successfully
+[2024-10-18 16:31:56]  [INFO] - User : thush Login Successfully. Redirect to the Index page.
