@@ -9,6 +9,44 @@
 
     echo "<link rel='stylesheet' href='../style/flowers.css?v=". time()."'>";
 
+    if(isset($_POST['add_cart'])){
+        if(!isset($_SESSION['user']['islogin']) ||  $_SESSION['user']['islogin'] == false){
+            header("Location:  ../login.php");
+        }else{
+            $user_id = $_SESSION['user']['user_id'];
+            $flower_id =  $_POST['flower_id'];
+            $quantity =  $_POST['quantity'];
+
+            $check_query = "SELECT * FROM shopping_cart WHERE  user_id = '$user_id' AND flower_id = '$flower_id'";
+            $check_result = mysqli_query($connection, $check_query);
+
+            if(mysqli_num_rows($check_result)>0){
+                $query = "UPDATE shopping_cart SET quantity = quantity + '$quantity' WHERE user_id ='$user_id' AND  flower_id = '$flower_id'";
+            }else{
+                $query = "INSERT INTO shopping_cart(user_id,flower_id,quantity) VALUES ('$user_id','$flower_id','$quantity')";
+            }
+
+            if(mysqli_query($connection,$query)){
+                header("Location: ../index.php");
+            }
+        }
+    }
+
+    if (isset($_POST['add_comment'])){
+        if(!isset($_SESSION['user']['islogin']) ||  $_SESSION['user']['islogin'] == false){
+            header("Location:  ../login.php");
+        }else{
+            $user_id = $_SESSION['user']['user_id'];
+            $flower_id =  $_POST['flower_id'];
+            $comment =  $_POST['comment'];
+
+            $insert_comment = "INSERT  INTO comments(user_id,flower_id,comment) VALUES ('$user_id','$flower_id','$comment')";
+            if(mysqli_query($connection,$insert_comment)){
+                header("Location: ./flowers.php?flower_id=$flower_id");
+            }
+        }
+    }
+
 
     if(isset($_GET['flower_id'])){
         $flower_id = user_input($_GET['flower_id']);
@@ -59,13 +97,58 @@
                         echo "<p class='price-off'>Price Off: $price_off%</p>";
                     }
 
+                    if($quantity >0){
+                        echo "
+                            <div class='button-container'>
+                                <form action='flowers.php'  method='post'>
+                                <input type='hidden' name='flower_id' value='$flower_id'>
+                                <lable>Quantity :  </lable>
+                                <input type='number' id='quantity' name='quantity' min='1' max='$quantity' value='1' step='1' required><br><br>
+                                <button  type='submit'  name='add_cart' class='add-to-cart'>Add to Cart</button>
+                                <button class='buy-now'>Buy Now</button>
+                                </form>
+                            </div>";
+                    }else{
+                        echo "<p style='color: red; font-weight: bold;'>Out of Stock</p>";
+                    }
+
+                    
+
                     echo "
-                    <div class='button-container'>
-                        <button class='add-to-cart'>Add to Cart</button>
-                        <button class='buy-now'>Buy Now</button>
-                    </div>
                 </div>
             </div>";
+
+
+            echo "<div class='comment'>
+                    <form action='' method='post'>
+                        <input type='hidden' name='flower_id' value='$flower_id'>
+                        <textarea name='comment' placeholder='Write your comment here...' required></textarea>
+                        <button type='submit' name='add_comment' class='add-comment'>Add Comment</button>
+                    </form>
+            ";
+
+            // show comments
+            $query = "SELECT * FROM comments WHERE flower_id = '$flower_id'";
+            $result = mysqli_query($connection, $query);
+
+            if(mysqli_num_rows($result)>0){
+                while($row = mysqli_fetch_assoc($result)){
+                    $user_id = $row['user_id'];
+                    $comment = $row['comment'];
+
+                    $user_data = "SELECT * FROM users WHERE user_id='$user_id'";
+                    $user_result = mysqli_query($connection, $user_data);
+                    $user_name = mysqli_fetch_assoc($user_result)['user_name'];
+
+                    echo "
+                        <h3>$user_name</h3> <br>
+                        <p>$comment</p>
+                    ";
+                }
+            }
+
+
+            echo "</div>";
     }
 
 

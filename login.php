@@ -44,6 +44,13 @@ try{
 
                     if (mysqli_num_rows($query) == 1){
                         $data = mysqli_fetch_assoc($query);
+
+                        $user_id =  $data['user_id'];
+
+                        $check_query = "SELECT * FROM loyalty_users WHERE  user_id='$user_id'";
+                        $check_query = mysqli_query($connection, $check_query);
+
+                        
                         
                         // Generate unique token
                         $token = bin2hex(random_bytes(16));
@@ -56,6 +63,12 @@ try{
                             'token'=> $token,
                             'islogin'=> true
                         ];
+
+                        if(mysqli_num_rows($check_query)>0){
+                            $loyalty_data = mysqli_fetch_assoc($check_query);
+                            $loyalty_id = $loyalty_data['loyalty_id'];
+                            $_SESSION['user'] = ['loyalty_id' => $loyalty_id];
+                        }
 
                         $username = $data['user_name'];
 

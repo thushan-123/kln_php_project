@@ -12,7 +12,7 @@
 
     echo "<link rel='stylesheet' href='style/main.css?v=". time()."'>";
 
-    echo "<h3>hello world</h3>";
+   
 
     if(isset($_POST['add_cart'])){
         
