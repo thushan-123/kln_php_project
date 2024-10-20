@@ -55,19 +55,27 @@ try{
                         // Generate unique token
                         $token = bin2hex(random_bytes(16));
                         // Data is added to the session
-                        $_SESSION['user'] = [
+                        /*$_SESSION['user'] = [
                             'user_id'=> $data['user_id'],
                             'user_name'=> $data['user_name'],
                             'email'=> $data['email'],
                             'mobile'=> $data['mobile'],
                             'token'=> $token,
                             'islogin'=> true
-                        ];
+                        ]; */
+                        $_SESSION['user']['user_id'] =  $data['user_id'];
+                        $_SESSION['user']['user_name'] =  $data['user_name'];
+                        $_SESSION['user']['email'] =  $data['email'];
+                        $_SESSION['user']['mobile'] =  $data['mobile'];
+                        $_SESSION['user']['token'] =  $token;
+                        $_SESSION['user']['islogin'] =  true;
 
                         if(mysqli_num_rows($check_query)>0){
                             $loyalty_data = mysqli_fetch_assoc($check_query);
                             $loyalty_id = $loyalty_data['loyalty_id'];
-                            $_SESSION['user'] = ['loyalty_id' => $loyalty_id];
+                            $loyalty_points = $loyalty_data['points_blance'];
+                            $_SESSION['user']['loyalty_id'] = $loyalty_id;
+                            $_SESSION['user']['points_blance'] = $loyalty_points;
                         }
 
                         $username = $data['user_name'];

@@ -54,7 +54,7 @@
                         $quantity = $row['quantity'];
                         $requested_date = $row['order_date'];
 
-                        $retrieve_flower = "SELECT flower_name FROM flowers";
+                        $retrieve_flower = "SELECT flower_name FROM flowers WHERE  flower_id = '$flower_id'";
                         $retrieve_flower_result = mysqli_query($connection, $retrieve_flower);
                         $flower_name =  mysqli_fetch_assoc($retrieve_flower_result)['flower_name'];
 
@@ -66,7 +66,7 @@
                                     <form action='suplier_order.php' method='post'>
                                         <input type='hidden' name='order_id' value='$order_id'>
                                         <td>
-                                            <input type='number' name='item_price'>
+                                            <input type='number' name='item_price' required>
                                         </td>
                                         <td>
                                             <button type='submit' name='accept_admin_order_request'>Deliver Order</button>

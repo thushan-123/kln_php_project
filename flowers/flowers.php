@@ -32,6 +32,63 @@
         }
     }
 
+    if(isset($_POST['buy_now'])){
+        if(!isset($_SESSION['user']['islogin']) ||  $_SESSION['user']['islogin']){
+            header("Location:  ../login.php");
+        }
+        $array = [];
+        $user_id = $_SESSION['user']['user_id'];
+        $flower_id =  $_POST['flower_id'];
+        $quantity =  $_POST['quantity'];
+        $sale_price = $_POST['sale_price'];
+        $address = $_POST['address'];
+        if(!isset($address)|| $address ==''){
+            echo "<script>window.alert('Enter the shipping address')</script>";
+        }
+
+        $flower_query = "SELECT * FROM flower_discounts WHERE  flower_id = '$flower_id'";
+        $flower_result = mysqli_query($connection, $flower_query);
+        $data =  mysqli_fetch_assoc($flower_result);
+
+
+        $today_discount =  $data['today_dicount'];
+        $loyalty_discount =  $data['loyalty_discount'];
+        $price_off = $data['price_off'];
+        $today_discount_end = $data['today_discount_end'];
+        $loyalty_discount_end = $data['loyalty_discount_end'];
+        $price_off_end = $data['price_off_end'];
+        
+        $items_price = (float) $quantity * $sale_price;
+
+        $discount = 0;
+
+        if (isset($today_discount) && date('Y-m-d') < $today_discount_end) {
+            $discount = $discount -  ($items_price * $today_discount / 100);
+        }
+        if (isset($_SESSION['user']['loyalty_id'])){
+            if (isset($loyalty_discount) && date('Y-m-d') < $loyalty_discount_end) {
+                $discount = $discount -  ($items_price * $loyalty_discount/ 100);
+            }
+        }
+        if (isset($price_off) && date('Y-m-d') < $price_off_end) {
+            $discount = $discount -  ($items_price * $price_off / 100);
+        }
+        $total = $items_price - $discount;
+        $array[$flower_id] = $quantity;
+
+        $_SESSION['payment'] = [
+            'type' => 'item',
+            'total' => $total,
+            'items' => $array,
+            'user_id' => $user_id,
+            'success' => false
+        ];
+
+        header("Location: ../payments/payment.php?address=$address");
+
+
+    }
+
     if (isset($_POST['add_comment'])){
         if(!isset($_SESSION['user']['islogin']) ||  $_SESSION['user']['islogin'] == false){
             header("Location:  ../login.php");
@@ -40,6 +97,7 @@
             $flower_id =  $_POST['flower_id'];
             $comment =  $_POST['comment'];
 
+           
             $insert_comment = "INSERT  INTO comments(user_id,flower_id,comment) VALUES ('$user_id','$flower_id','$comment')";
             if(mysqli_query($connection,$insert_comment)){
                 header("Location: ./flowers.php?flower_id=$flower_id");
@@ -102,10 +160,12 @@
                             <div class='button-container'>
                                 <form action='flowers.php'  method='post'>
                                 <input type='hidden' name='flower_id' value='$flower_id'>
+                                <input type='hidden' name='sale_price' value='$sale_price'>
                                 <lable>Quantity :  </lable>
                                 <input type='number' id='quantity' name='quantity' min='1' max='$quantity' value='1' step='1' required><br><br>
                                 <button  type='submit'  name='add_cart' class='add-to-cart'>Add to Cart</button>
-                                <button class='buy-now'>Buy Now</button>
+                                <button name='buy_now' class='buy-now'>Buy Now</button>
+                                <input type='text' name='address'  placeholder='Enter your address'>
                                 </form>
                             </div>";
                     }else{

@@ -20,19 +20,19 @@ CREATE Table payments(reference_no VARCHAR(20),
                         FOREIGN KEY (user_id) REFERENCES users(user_id));
 
 ALTER TABLE payments ADD address TEXT;
+CREATE TABLE delivery_items (
+    flower_id VARCHAR(100),
+    user_id INT(10),
+    quantity INT(5),
+    reference_no VARCHAR(20));
 
-CREATE TABLE delivery(flower_id VARCHAR(100),
-                        user_id INT(10),
-                        quantity INT(5),
-                        reference_no VARCHAR(20),
-                        FOREIGN KEY (user_id) REFERENCES users(user_id),
-                        FOREIGN KEY (flower_id) REFERENCES flowers(flower_id),
-                        FOREIGN KEY (reference_no) REFERENCES payments(reference_no));
 
 CREATE TABLE loyalty_users(loyalty_id VARCHAR(36),
                            points_blance INT(5),
                            user_id INT(10),
                            FOREIGN KEY (user_id) REFERENCES users(user_id));
+
+ALTER TABLE loyalty_users ADD PRIMARY KEY (user_id, loyalty_id);
 
 CREATE TABLE shopping_cart(user_id INT(10),
                            flower_id VARCHAR(100),

@@ -14,6 +14,9 @@ if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != tr
     header("Location: ../admin.php");
 }
 
+echo "<a href='discount.php'> Add Discounts</a>
+      <a href='flower_search.php'>Flower Information</a>";    
+
 if (isset($_POST['delete_category'])){
     try{
 

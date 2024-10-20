@@ -11,6 +11,9 @@
         header("Location: ../admin.php");
     }
 
+    echo "<a href='delivered_orders.php'>Suplier Deliverd Orders</a>
+          <a href='delivered_orders_history.php'>Suplier Deliverd Orders History</a>";
+
     if (isset($_POST['request_order'])){
         $flower_id = user_input($_POST['flower_id']);
         $quantity = (int) user_input($_POST['quantity']);

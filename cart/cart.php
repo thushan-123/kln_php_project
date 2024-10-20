@@ -133,7 +133,7 @@
         ];
     
         echo "<div class='buy_now'>
-                    <form action='../payments/payment.php' method='post'>
+                    <form action='../payments/payment.php' method='get'>
                     <input type='text' name='address'  placeholder='Enter your address' required><br><br>
                     <button type='submit' > Buy Now</button>
                     </form>
