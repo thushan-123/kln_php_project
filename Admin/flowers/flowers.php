@@ -111,7 +111,11 @@ if (isset($_POST['submit_flowers_categories'])){
     $category_id = $_POST['category_id'];
     $flowers_id_array = $_POST['flower_id_array'];
 
+    
     $delete_query = "DELETE FROM flower_categories WHERE category_id='$category_id'";
+    mysqli_query($connection, $delete_query);
+    
+    
 
     if(mysqli_query($connection,$delete_query)){
         foreach($flowers_id_array as $flower_id){
@@ -270,7 +274,7 @@ echo "<div id=flower_categories>";
                     $result = mysqli_query($connection,$check_query);
 
                     if (mysqli_num_rows($result) > 0){
-                        echo "<input type='checkbox' name='flowers[]' value='$flower_id' checked>
+                        echo "<input type='checkbox' name='flower_id_array[]' value='$flower_id' checked>
                             <lable>$flower_name</lable>
                             <img src='../../$dir_path' alt='no image' width='100px' height='100px'/>";
 
