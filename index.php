@@ -152,8 +152,10 @@
                     if (isset($today_discount) && date('Y-m-d') < $today_discount_end) {
                         echo "<p class='discount'>Today's Discount: $today_discount%</p>";
                     }
-                    if (isset($loyalty_discount) && date('Y-m-d') < $loyalty_discount_end) {
-                        echo "<p class='loyalty-discount'>Loyalty Discount: $loyalty_discount%</p>";
+                    if (isset($_SESSION['user']['loyalty_id'])){
+                        if (isset($loyalty_discount) && date('Y-m-d') < $loyalty_discount_end) {
+                            echo "<p class='loyalty-discount'>Loyalty Discount: $loyalty_discount%</p>";
+                        }
                     }
                     if (isset($price_off) && date('Y-m-d') < $price_off_end) {
                         echo "<p class='price-off'>Price Off: $price_off%</p>";
