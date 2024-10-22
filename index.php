@@ -125,14 +125,20 @@
             // check the discount
             $query_discount = "SELECT * FROM flower_discounts WHERE flower_id = '$flower_id'";
             $data_set =  mysqli_query($connection,$query_discount);
-            $data =  mysqli_fetch_assoc($data_set);
+            
 
-            $today_discount =  $data['today_dicount'];
-            $loyalty_discount =  $data['loyalty_discount'];
-            $price_off = $data['price_off'];
-            $today_discount_end = $data['today_discount_end'];
-            $loyalty_discount_end = $data['loyalty_discount_end'];
-            $price_off_end = $data['price_off_end'];
+            if (mysqli_num_rows($data_set)>0){
+                $data =  mysqli_fetch_assoc($data_set);
+
+                $today_discount =  $data['today_dicount'];
+                $loyalty_discount =  $data['loyalty_discount'];
+                $price_off = $data['price_off'];
+                $today_discount_end = $data['today_discount_end'];
+                $loyalty_discount_end = $data['loyalty_discount_end'];
+                $price_off_end = $data['price_off_end'];
+            }
+
+            
 
 
             echo "

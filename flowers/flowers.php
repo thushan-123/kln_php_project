@@ -48,15 +48,19 @@
 
         $flower_query = "SELECT * FROM flower_discounts WHERE  flower_id = '$flower_id'";
         $flower_result = mysqli_query($connection, $flower_query);
-        $data =  mysqli_fetch_assoc($flower_result);
+
+        if (mysqli_num_rows($flower_result)>0){
+            $data =  mysqli_fetch_assoc($flower_result);
 
 
-        $today_discount =  $data['today_dicount'];
-        $loyalty_discount =  $data['loyalty_discount'];
-        $price_off = $data['price_off'];
-        $today_discount_end = $data['today_discount_end'];
-        $loyalty_discount_end = $data['loyalty_discount_end'];
-        $price_off_end = $data['price_off_end'];
+            $today_discount =  $data['today_dicount'];
+            $loyalty_discount =  $data['loyalty_discount'];
+            $price_off = $data['price_off'];
+            $today_discount_end = $data['today_discount_end'];
+            $loyalty_discount_end = $data['loyalty_discount_end'];
+            $price_off_end = $data['price_off_end'];
+        }
+        
         
         $items_price = (float) $quantity * $sale_price;
 
@@ -109,13 +113,10 @@
     if(isset($_GET['flower_id'])){
         $flower_id = user_input($_GET['flower_id']);
 
-        $query = "SELECT f.flower_id, f.flower_name, f.quantity, f.sale_price, f.description, fi.dir_path, 
-                  fd.today_dicount, fd.loyalty_discount, fd.price_off, fd.today_discount_end, 
-                  fd.loyalty_discount_end, fd.price_off_end 
-                  FROM flowers AS f
-                  INNER JOIN flower_images AS fi ON f.flower_id = fi.flower_id
-                  INNER JOIN flower_discounts AS fd ON f.flower_id = fd.flower_id
-                  WHERE f.flower_id = '$flower_id'";
+        $query = "SELECT flowers.flower_id, flower_name, quantity, sale_price, description, dir_path 
+                  FROM flowers 
+                  INNER JOIN flower_images ON flowers.flower_id = flower_images.flower_id
+                  WHERE flowers.flower_id = '$flower_id'";
 
         $result = mysqli_query($connection,$query);
         $row = mysqli_fetch_assoc($result);
@@ -127,13 +128,22 @@
         $description = $row['description'];
         $dir_path = $row['dir_path'];
 
-        $today_discount =  $row['today_dicount'];
-        $loyalty_discount =  $row['loyalty_discount'];
-        $price_off = $row['price_off'];
-        $today_discount_end = $row['today_discount_end'];
-        $loyalty_discount_end = $row['loyalty_discount_end'];
-        $price_off_end = $row['price_off_end'];
+        $query_dis = "SELECT * FROM flower_discounts WHERE flower_id='$flower_id'";
+        $result_dis = mysqli_query($connection,$query_dis);
 
+        if(mysqli_num_rows($result_dis) >0){
+            $row_dis = mysqli_fetch_assoc($result_dis);
+
+            $today_discount =  $row_dis['today_dicount'];
+            $loyalty_discount =  $row_dis['loyalty_discount'];
+            $price_off = $row_dis['price_off'];
+            $today_discount_end = $row_dis['today_discount_end'];
+            $loyalty_discount_end = $row_dis['loyalty_discount_end'];
+            $price_off_end = $row_dis['price_off_end'];
+
+        }
+
+        
         echo "
             <div class='container'>
                 <div class='image-container'>
