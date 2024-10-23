@@ -63,7 +63,7 @@
             $dir_path = mysqli_fetch_assoc($img_result)['dir_path'];
             
 
-            $flower_query = "SELECT * FROM flowers INNER JOIN flower_discounts ON flowers.flower_id=flower_discounts.flower_id WHERE  flowers.flower_id = '$flower_id'";
+            $flower_query = "SELECT * FROM flowers  WHERE flower_id = '$flower_id'";
             $flower_result = mysqli_query($connection, $flower_query);
             $data =  mysqli_fetch_assoc($flower_result);
 
@@ -72,12 +72,21 @@
             $sale_price = $data['sale_price'];
             $max_quantity =  $data['quantity'];
 
-            $today_discount =  $data['today_dicount'];
-            $loyalty_discount =  $data['loyalty_discount'];
-            $price_off = $data['price_off'];
-            $today_discount_end = $data['today_discount_end'];
-            $loyalty_discount_end = $data['loyalty_discount_end'];
-            $price_off_end = $data['price_off_end'];
+            $dis_q = "SELECT * FROM flower_discounts WHERE  flower_id='$flower_id'";
+            $dis_result = mysqli_query($connection, $dis_q);
+
+            if(mysqli_num_rows($dis_result)>0){
+                $data_d = mysqli_fetch_assoc($dis_result);
+                
+                $today_discount =  $data_d['today_dicount'];
+                $loyalty_discount =  $data_d['loyalty_discount'];
+                $price_off = $data_d['price_off'];
+                $today_discount_end = $data_d['today_discount_end'];
+                $loyalty_discount_end = $data_d['loyalty_discount_end'];
+                $price_off_end = $data_d['price_off_end'];
+            }
+
+            
 
             $items_price = (float) $user_quantity * $sale_price;
             
