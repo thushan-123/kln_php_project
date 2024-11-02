@@ -1759,3 +1759,6 @@
 [2024-11-02 16:02:33]  [INFO] - get the supplier data in db successfully
 [2024-11-02 16:02:35]  [INFO] - supplier verify successfully
 [2024-11-02 16:02:35]  [INFO] - get the supplier data in db successfully
+[2024-11-02 16:41:32]  [INFO] - Retrieve data from Users table Successfully
+[2024-11-02 16:42:17]  [INFO] - Retrieve data from Users table Successfully
+[2024-11-02 16:42:17]  [INFO] - User : thushan Login Successfully. Redirect to the Index page.
