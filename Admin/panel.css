@@ -1,0 +1,122 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ccccb3;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #66ff66;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
+    margin-top: 50px;
+}
+
+h1, h4 {
+    font-size: 1.8rem;
+    color: #6b6b47;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.nav-links {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+a {
+    display: inline-block;
+    background-color: #66a3ff;
+    color: black;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #0066ff;
+    transform: scale(1.05);
+}
+
+.logout-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #f44336;
+    display: inline-block;
+    color: black;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: center;
+    padding: 12px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+@media only screen and (max-width: 768px) {
+    a, button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    h1, h4 {
+        font-size: 18px;
+    }
+}

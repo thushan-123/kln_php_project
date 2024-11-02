@@ -1,0 +1,277 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    border: 1px solid black;
+}
+
+
+button[name="add_category"] {
+    width: 200px;
+    padding: 10px 5px;
+    background-color: #28a745;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#category_name{
+    width: 400px;
+}
+
+.cat{
+    margin-left: 15px;
+    font-weight: bold;
+
+}
+
+#flower_upload_form{
+    margin-left: 15px;
+}
+
+#flowers-categories{
+    margin-left: 15px;
+}
+
+button[name="add_category"]:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+button[name="flower_upload"] {
+    width: 200px;
+    padding: 10px 5px;
+    background-color: #28a745;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[name="flower_upload"]:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+button[name="search_category"] {
+    width: 200px;
+    padding: 10px 5px;
+    background-color: #28a745;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[name="search_category"]:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    padding: 10px;
+}
+
+nav a:hover {
+    color: #0056b3;
+}
+
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    margin-bottom: 15px;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input, form textarea, form select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 15px;
+    border: 1px solid black;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+.add {
+    padding: 10px 15px;
+    border: 1px solid black;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 15px;
+    justify-content: center;
+    display: flex;
+    width: 250px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#category_name{
+    margin-left: 10px;
+}
+
+.add:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.add-category-form {
+    margin-top: 20px;
+}
+
+#flower_list{
+    margin-left: 10px;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.head{
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+}
+
+.added {
+    padding: 12px 20px;
+    border: 1px solid black;
+    background-color: #1a53ff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 18px;
+    justify-content: center;
+    display: flex;
+    width: 250px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.added:hover {
+    background-color: #0039e6;
+    transform: scale(1.05);
+}
+
+h2{
+    color: #33cc00;
+
+}
+
+.backBtn{
+    padding: 8px 10px;
+    font-size: 16px;
+    background-color: #40ff00;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 90px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.backBtn:hover{
+    background-color: #33cc00;
+    transform: scale(1.05);
+}
+
+.back{
+    justify-content: right;
+    display: flex;
+    position: absolute;
+    top: 33px;
+    right: 23px;
+
+}

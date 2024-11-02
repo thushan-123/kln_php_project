@@ -1,0 +1,148 @@
+h1 {
+    text-align: center;
+    margin-top: -25px;
+    justify-content: center;
+    position: relative;
+    left: 0;
+}
+
+.formHead {
+    background-color: #ffdb4d;
+    color: #804000;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.container {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+#email, #password {
+    font-size: 15px;
+    width: 250px;
+    height: 35px;
+    border-radius: 15px;
+    padding: 2px;
+    cursor: text;
+    border: 2px solid black;
+}
+
+#submit-btn {
+    font-weight: bold;
+    font-size: 15px;
+    width: 255px;
+    height: 35px;
+    background-color: #66ffff;
+    border-radius: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#submit-btn:hover {
+    background-color: aqua;
+    text-decoration: underline;
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+
+#link {
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #343131;
+    transition: 0.3s;
+}
+
+#link:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.welcome-box {
+    background-color: #3385ff;
+    color: black;
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 1.3em;
+    text-align: center;
+    animation: slideIn 0.5s;
+    font-weight: bold;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#error-box {
+    background-color: #ff3333;
+    color: black;
+    border: 2px solid black;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 1.3em;
+    animation: fadeIn 0.5s;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#error-box p {
+    margin: 0;
+}
+
+body {
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('Flower_Image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    border: 2px solid black;
+}
+
+.form-box {
+    width: 350px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    padding-top: 65px;
+}
