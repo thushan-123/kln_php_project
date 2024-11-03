@@ -1762,3 +1762,31 @@
 [2024-11-02 16:41:32]  [INFO] - Retrieve data from Users table Successfully
 [2024-11-02 16:42:17]  [INFO] - Retrieve data from Users table Successfully
 [2024-11-02 16:42:17]  [INFO] - User : thushan Login Successfully. Redirect to the Index page.
+[2024-11-03 10:59:41]  [INFO] - Admin: thush login successfully. Redirect to the admin_panel
+[2024-11-03 10:59:48]  [INFO] - get the supplier data in db successfully
+[2024-11-03 11:05:32]  [INFO] - get the supplier data in db successfully
+[2024-11-03 11:05:55]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:06:01]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:07:00]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:07:01]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:07:05]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:07:08]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:07:19]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:08:06]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:08:11]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:09:55]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:09:58]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:10:49]  [INFO] - retrieve data from users table successfully
+[2024-11-03 11:10:49]  [WARNING] - suplier login invalid username or password
+[2024-11-03 11:10:56]  [INFO] - retrieve data from users table successfully
+[2024-11-03 11:10:56]  [WARNING] - suplier login invalid username or password
+[2024-11-03 11:11:28]  [INFO] - retrieve data from users table successfully
+[2024-11-03 11:11:28]  [WARNING] - suplier login invalid username or password
+[2024-11-03 11:11:41]  [INFO] - retrieve data from users table successfully
+[2024-11-03 11:11:41]  [WARNING] - suplier login invalid username or password
+[2024-11-03 11:13:10]  [INFO] - retrieve data from users table successfully
+[2024-11-03 11:13:10]  [INFO] - Suplier :  login successfully. redirect to the suplier_panel page.
+[2024-11-03 11:31:02]  [WARNING] - sdsd@mail.com or 0993475633 is already taken
+[2024-11-03 11:31:02]  [INFO] - register_suplier.php : Supplier data inserted successfully
+[2024-11-03 11:32:26]  [INFO] - Get flowers_category data successfully
+[2024-11-03 11:39:44]  [INFO] - get the supplier data in db successfully

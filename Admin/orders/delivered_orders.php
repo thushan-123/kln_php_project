@@ -63,7 +63,7 @@ if  (isset($_POST['delivered'])){
     </div>
 
     <?php
-$query = "SELECT * FROM orders WHERE isAccept_suplier=true  AND isDelivered=false";
+$query = "SELECT * FROM orders WHERE isAccept_supplier=true  AND isDelivered=false";
 
 $result = mysqli_query($connection,$query);
 

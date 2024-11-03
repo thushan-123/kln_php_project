@@ -11,7 +11,7 @@ include_once  '../../Connection/connection.php';
 
 if (!isset($_SESSION['admin']['islogin']) || $_SESSION['admin']['islogin'] != true){
 
-    header("Location: ../Admin.php");
+    header("Location: ../admin.php");
 }
 ?>
 
@@ -47,7 +47,7 @@ if (isset($_POST['submit_verify'])){
 
 echo "<div id='supplier-verify'>";
 
-if(cookie_checker_admin()){
+
 
     try{
 
@@ -94,7 +94,7 @@ if(cookie_checker_admin()){
     }catch(Exception $e){
         logger("ERROR", $e->getMessage());
     }
-}
+
 
 echo "</div>";
 
