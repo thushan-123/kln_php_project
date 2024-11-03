@@ -1790,3 +1790,10 @@
 [2024-11-03 11:31:02]  [INFO] - register_suplier.php : Supplier data inserted successfully
 [2024-11-03 11:32:26]  [INFO] - Get flowers_category data successfully
 [2024-11-03 11:39:44]  [INFO] - get the supplier data in db successfully
+[2024-11-03 15:02:22]  [INFO] - Admin: thush login successfully. Redirect to the admin_panel
+[2024-11-03 15:02:24]  [INFO] - Get flowers_category data successfully
+[2024-11-03 15:05:34]  [INFO] - Get flowers_category data successfully
+[2024-11-03 15:17:47]  [ERROR] - Unknown column 'today_dicount' in 'field list'
+[2024-11-03 15:19:21]  [ERROR] - Unknown column 'today_dicount' in 'field list'
+[2024-11-03 15:21:59]  [ERROR] - Incorrect date value: '' for column `kln_php`.`flower_discounts`.`price_off_end` at row 1
+[2024-11-03 15:26:05]  [ERROR] - Incorrect date value: '' for column `kln_php`.`flower_discounts`.`loyalty_discount_end` at row 1

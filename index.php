@@ -14,7 +14,7 @@ if (isset($_POST['logout'])) {
     exit();
 }
 
-$isLoggedIn = isset($_SESSION['user']) && $_SESSION['user']['islogin'] == true;
+$isLoggedIn = isset($_SESSION['user']['islogin']) && $_SESSION['user']['islogin'] == true;
 
 $category_q = "SELECT * FROM categories";
 $category_r = mysqli_query($connection, $category_q);
