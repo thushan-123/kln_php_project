@@ -37,7 +37,7 @@ if (isset($_POST['logout'])) {
     <div class="nav-links">
         <a href='flowers/flowers.php'>Flowers</a>
         <a href='orders/orders.php'>Orders</a>
-        <a href='suplier/suplier.php'>Suppliers</a>
+        <a href='suplier/supliers.php'>Suppliers</a>
         <a href='payments/payment.php'>Payments Details</a>
     </div>
 

@@ -1797,3 +1797,18 @@
 [2024-11-03 15:19:21]  [ERROR] - Unknown column 'today_dicount' in 'field list'
 [2024-11-03 15:21:59]  [ERROR] - Incorrect date value: '' for column `kln_php`.`flower_discounts`.`price_off_end` at row 1
 [2024-11-03 15:26:05]  [ERROR] - Incorrect date value: '' for column `kln_php`.`flower_discounts`.`loyalty_discount_end` at row 1
+[2024-11-08 08:38:03]  [INFO] - Admin: thush login successfully. Redirect to the admin_panel
+[2024-11-08 08:38:06]  [INFO] - Get flowers_category data successfully
+[2024-11-08 08:38:08]  [ERROR] - Table 'kln_php.flowers_category' doesn't exist
+[2024-11-08 08:38:08]  [INFO] - Get flowers_category data successfully
+[2024-11-08 08:38:09]  [ERROR] - Table 'kln_php.flowers_category' doesn't exist
+[2024-11-08 08:38:09]  [INFO] - Get flowers_category data successfully
+[2024-11-08 08:38:10]  [ERROR] - Table 'kln_php.flowers_category' doesn't exist
+[2024-11-08 08:38:10]  [INFO] - Get flowers_category data successfully
+[2024-11-08 08:38:33]  [INFO] - category: $add_category added successfully
+[2024-11-08 08:38:33]  [INFO] - Get flowers_category data successfully
+[2024-11-08 08:38:33]  [INFO] - Get flowers_category data successfully
+[2024-11-08 08:44:41]  [INFO] - Get flowers_category data successfully
+[2024-11-08 08:44:46]  [INFO] - Get flowers_category data successfully
+[2024-11-08 08:44:55]  [INFO] - Get flowers_category data successfully
+[2024-11-08 08:46:21]  [INFO] - Get flowers_category data successfully
