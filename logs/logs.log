@@ -1812,3 +1812,10 @@
 [2024-11-08 08:44:46]  [INFO] - Get flowers_category data successfully
 [2024-11-08 08:44:55]  [INFO] - Get flowers_category data successfully
 [2024-11-08 08:46:21]  [INFO] - Get flowers_category data successfully
+[2024-11-09 12:04:42]  [INFO] - Admin: thush login successfully. Redirect to the admin_panel
+[2024-11-09 12:05:36]  [INFO] - Get flowers_category data successfully
+[2024-11-09 12:05:40]  [ERROR] - Table 'kln_php.flowers_category' doesn't exist
+[2024-11-09 12:05:40]  [INFO] - Get flowers_category data successfully
+[2024-11-09 12:05:45]  [ERROR] - Table 'kln_php.flowers_category' doesn't exist
+[2024-11-09 12:05:45]  [INFO] - Get flowers_category data successfully
+[2024-11-09 12:05:50]  [INFO] - Get flowers_category data successfully
