@@ -96,9 +96,9 @@ if (isset($_POST['submit_flowers_categories'])) {
     $category_id = $_POST['category_id'];
     $flowers_id_array = $_POST['flower_id_array'];
 
-    //$delete_query = "DELETE FROM flower_categories WHERE category_id='$category_id'";
+    $delete_query = "DELETE FROM flower_categories WHERE category_id='$category_id'";
 
-    if ($flowers_id_array) {
+    if (mysqli_query($connection,$delete_query)) {
         foreach ($flowers_id_array as $flower_id) {
             $insert_query = "INSERT IGNORE INTO flower_categories(flower_id, category_id) VALUES ('$flower_id', '$category_id')";
 
